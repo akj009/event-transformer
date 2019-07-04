@@ -1,0 +1,11 @@
+{
+  "Rating" : "$(rating.primary.value)",
+  "SecondaryRatings" : {
+    "quality" : {
+      "Id" : "quality",
+      "Value" : "$(rating.quality.value)",
+      "Range" : 5
+    }
+  },
+  "Range" : 5
+}
