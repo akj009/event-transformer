@@ -28,11 +28,11 @@ public class EventTransformerService {
     public EventTransformerService() throws IOException {
         log.info("input schema string: {}", schemaStr);
         deserializedSchema = deserialize(schemaStr).as(LinkedHashMap.class);
-        prepareMissingNodeReferenceMap(deserializedSchema, "");
+//        prepareMissingNodeReferenceMap(deserializedSchema, "");
     }
 
     public String transformEvent(String inputJson) {
-        final Any deserializeInput = deserialize(inputJson);
+        /*final Any deserializeInput = deserialize(inputJson);
         final LinkedHashMap schemaCopy = new LinkedHashMap(deserializedSchema);
         lookupPathsMap.forEach((schemaPath, lookupPath) -> {
             Any eventPathValue = deserializeInput.get(lookupPath.split("\\."));
@@ -53,7 +53,8 @@ public class EventTransformerService {
 
         log.info("final event: {}", schemaCopy);
 
-        return JsonStream.serialize(schemaCopy);
+        return JsonStream.serialize(schemaCopy);*/
+        return inputJson;
     }
 
     public static void main(String[] args) throws IOException {

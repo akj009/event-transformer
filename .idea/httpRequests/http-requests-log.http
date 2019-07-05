@@ -1,0 +1,83 @@
+POST http://127.0.0.1:8082/eventtransformer/transform/one
+Content-Type: application/json
+
+{"key":  "value"}
+
+<> 2019-07-05T105108.200.txt
+
+###
+
+POST http://127.0.0.1:8082/eventtransformer/transform/one
+Content-Type: application/json
+
+{"key":  "value"}
+
+<> 2019-07-05T105007.500.json
+
+###
+
+POST http://127.0.0.1:8082/eventtransformer/transform/one
+Content-Type: application/json
+
+{"key":  "value"}
+
+###
+
+POST http://127.0.0.1:8082/eventtransformer/transform/one
+Content-Type: application/json
+
+{"key":  "value"}
+
+<> 2019-07-05T104809.500.json
+
+###
+
+POST http://127.0.0.1:8082/eventtransformer/transform/one
+Content-Type: application/json
+
+{"key":  "value"}
+
+<> 2019-07-05T104703.500.json
+
+###
+
+POST http://127.0.0.1:8082/eventtransformer/transform/one
+Content-Type: application/json
+
+{"key":  "value"}
+
+<> 2019-07-05T104341.500.json
+
+###
+
+POST http://127.0.0.1:8082/eventtransformer/transform/one
+Content-Type: application/json
+
+{"key":  "value"}
+
+<> 2019-07-05T104230.500.json
+
+###
+
+POST http://127.0.0.1:8082/eventtransformer/transform/one
+Content-Type: application/json
+{"a": "b"}
+<> 2019-07-05T082259.400.json:
+<> 2019-07-05T082244.400.json:
+
+<> 2019-07-05T104121.400.html
+
+###
+
+POST http://127.0.0.1:8082/eventtransformer/transform/one
+
+<> 2019-07-05T082259.400.json
+
+###
+
+POST http://127.0.0.1:8082/eventtransformer/transform/one
+
+<> 2019-07-05T082244.400.json
+
+###
+

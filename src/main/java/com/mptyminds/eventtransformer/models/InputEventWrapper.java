@@ -13,7 +13,7 @@ import java.util.List;
 public class InputEventWrapper {
 
     private EventSource eventSource;
-    private Instant arrivalTime;
+    private String arrivalTime;
     private String payload;
     private List<EventDestination> destinationsList;
     private String eventNamePaths;

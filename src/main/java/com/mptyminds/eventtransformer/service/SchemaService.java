@@ -12,7 +12,7 @@ import static com.mptyminds.eventtransformer.CommonUtil.PATH_PATTERN;
 public class SchemaService {
 
     private void prepareMissingNodeReferenceMap(Map transformationSchema, String rootPath) {
-        transformationSchema.forEach((key, value) -> {
+        /*transformationSchema.forEach((key, value) -> {
             log.info("{}: {}", key, value);
             final String schemaPathKey = rootPath + (DOT) + (key);
             if (value instanceof String) {
@@ -31,6 +31,6 @@ public class SchemaService {
                 return;
             }
         });
-        log.info(lookupPathsMap);
+        log.info(lookupPathsMap);*/
     }
 }
