@@ -1,6 +1,7 @@
 package com.mptyminds.eventtransformer.api;
 
-import com.mptyminds.eventtransformer.service.EventTransformer;
+import com.mptyminds.eventtransformer.service.EventTransformerService;
+import com.mptyminds.eventtransformer.service.TransformationHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,13 +15,13 @@ import reactor.core.publisher.Mono;
 public class InputApi {
 
     @Autowired
-    private EventTransformer eventTransformer;
+    private TransformationHandler transformationHandler;
 
     @PostMapping(value = "/one")
     public Mono<ResponseEntity<String>> transformSingleJson(@RequestBody String inputJson) {
 
-        String transformedJson = eventTransformer.transformEvent(inputJson);
+        Mono<String> transformedJson = transformationHandler.handleEventTransformation(inputJson);
 
-        return Mono.just(ResponseEntity.ok(transformedJson));
+        return transformedJson.map(ResponseEntity::ok);
     }
 }

@@ -16,7 +16,6 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <jsoniter.version>0.9.19</jsoniter.version>
     </properties>
 
@@ -28,17 +27,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox-swagger2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox-swagger2.version}</version>
         </dependency>
 
         <dependency>
