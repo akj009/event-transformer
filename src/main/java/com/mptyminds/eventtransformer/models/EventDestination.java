@@ -1,5 +1,6 @@
 package com.mptyminds.eventtransformer.models;
 
+import com.mptyminds.eventtransformer.constants.DestinationTypeEnum;
 import lombok.*;
 
 @Getter

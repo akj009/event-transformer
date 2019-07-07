@@ -31,7 +31,7 @@ public class EventTransformerService {
 //        prepareMissingNodeReferenceMap(deserializedSchema, "");
     }
 
-    public String transformEvent(String inputJson) {
+    public String transformEvent(String inputJson, ) {
         /*final Any deserializeInput = deserialize(inputJson);
         final LinkedHashMap schemaCopy = new LinkedHashMap(deserializedSchema);
         lookupPathsMap.forEach((schemaPath, lookupPath) -> {
@@ -57,8 +57,4 @@ public class EventTransformerService {
         return inputJson;
     }
 
-    public static void main(String[] args) throws IOException {
-        EventTransformerService eventTransformerService = new EventTransformerService();
-        eventTransformerService.transformEvent(String.join("", Files.readAllLines(Paths.get("src/main/resources/testinput.json"))));
-    }
 }

@@ -2,7 +2,6 @@ package com.mptyminds.eventtransformer.models;
 
 import lombok.*;
 
-import java.time.Instant;
 import java.util.List;
 
 @Getter

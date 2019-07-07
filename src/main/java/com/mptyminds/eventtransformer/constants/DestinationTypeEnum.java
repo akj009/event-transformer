@@ -1,4 +1,4 @@
-package com.mptyminds.eventtransformer.models;
+package com.mptyminds.eventtransformer.constants;
 
 public enum DestinationTypeEnum {
 

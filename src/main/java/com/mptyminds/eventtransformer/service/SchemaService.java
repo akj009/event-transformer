@@ -1,5 +1,7 @@
 package com.mptyminds.eventtransformer.service;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -9,6 +11,7 @@ import static com.mptyminds.eventtransformer.CommonUtil.DOT;
 import static com.mptyminds.eventtransformer.CommonUtil.PATH_PATTERN;
 
 @Service
+@RefreshScope
 public class SchemaService {
 
     private void prepareMissingNodeReferenceMap(Map transformationSchema, String rootPath) {
