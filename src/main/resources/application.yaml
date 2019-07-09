@@ -1,0 +1,7 @@
+server:
+  servlet:
+    context-path: /eventtransformer
+
+logging:
+  level:
+    "*": debug

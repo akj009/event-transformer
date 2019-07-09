@@ -31,7 +31,7 @@ public class EventTransformerService {
 //        prepareMissingNodeReferenceMap(deserializedSchema, "");
     }
 
-    public String transformEvent(String inputJson, ) {
+    public String transformEvent(String inputJson) {
         /*final Any deserializeInput = deserialize(inputJson);
         final LinkedHashMap schemaCopy = new LinkedHashMap(deserializedSchema);
         lookupPathsMap.forEach((schemaPath, lookupPath) -> {

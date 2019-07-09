@@ -13,5 +13,5 @@ public class SourceEntity {
     @Id
     private String id;
     private String sourceName;
-    private List<String> sourceEventNamePaths;
+    private String sourceEventNamePaths;
 }

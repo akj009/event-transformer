@@ -1,0 +1,27 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: event-transformer
+  profiles:
+    active: dev
+  cloud:
+    config:
+      uri: http://localhost:8081
+      label: v1
+  datasource:
+    url: jdbc:mysql://localhost:3306/event_transformer
+    username: root
+    password: root@123
+#    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    generate-ddl: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
