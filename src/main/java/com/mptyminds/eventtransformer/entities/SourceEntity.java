@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import java.util.List;
 
 @Data
-@Entity
 public class SourceEntity {
 
     @Id

@@ -2,6 +2,10 @@ server:
   servlet:
     context-path: /eventtransformer
 
+event:
+  sources:
+    key: event.sources
+
 logging:
   level:
     "*": debug
