@@ -21,9 +21,9 @@ public class ValidSourceFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
         final String requestURI = req.getRequestURI();
-        log.info(
-                "Logging Request  {} : {}", req.getMethod(),
+        log.info("Logging Request  {} : {}", req.getMethod(),
                 requestURI);
+        // TODO: check if request coming for valid endpoint
         filterChain.doFilter(servletRequest, servletResponse);
         log.info(
                 "Logging Response :{}",

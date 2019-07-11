@@ -1,14 +1,10 @@
 package com.mptyminds.eventtransformer.service;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.jsoniter.any.Any;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-import java.util.regex.Matcher;
-
-import static com.mptyminds.eventtransformer.CommonUtil.DOT;
-import static com.mptyminds.eventtransformer.CommonUtil.PATH_PATTERN;
 
 @Service
 @RefreshScope
@@ -35,5 +31,9 @@ public class SchemaService {
             }
         });
         log.info(lookupPathsMap);*/
+    }
+
+    public Any getEventSchema(String eventName, String sourceId) {
+        return null;
     }
 }

@@ -1,7 +1,5 @@
 package com.mptyminds.eventtransformer.service;
 
-import com.jsoniter.any.Any;
-import com.jsoniter.output.JsonStream;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
@@ -11,11 +9,8 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
 
 import static com.jsoniter.JsonIterator.*;
-import static com.mptyminds.eventtransformer.CommonUtil.DOT;
-import static com.mptyminds.eventtransformer.CommonUtil.PATH_PATTERN;
 
 @Log4j2
 @Component
