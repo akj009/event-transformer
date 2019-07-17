@@ -6,17 +6,20 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.util.StringUtils;
 
 import static com.mptyminds.eventtransformer.util.CommonUtil.NULL;
-import static com.mptyminds.eventtransformer.util.CommonUtil.PATH_SEPARATER_CHARACTER;
+import static com.mptyminds.eventtransformer.util.CommonUtil.PATH_SEPARATOR_CHARACTER;
 
 @Log4j2
 public class JsonUtil {
 
     public static String findStringOnPath(String paths, Any deserJsonObject) {
-
-        for (String path : paths.split(PATH_SEPARATER_CHARACTER)) {
-            final String stringOnPath = deserJsonObject.get(path.split(".")).as(String.class);
-            if(StringUtils.hasText(stringOnPath)) {
-                return stringOnPath;
+        for (String path : paths.split(PATH_SEPARATOR_CHARACTER)) {
+            try {
+                final String stringOnPath = deserJsonObject.get(path.split("\\.")).as(String.class);
+                if(StringUtils.hasText(stringOnPath)) {
+                    return stringOnPath;
+                }
+            } catch (Exception e) {
+                log.warn("path not found in input json");
             }
         }
 

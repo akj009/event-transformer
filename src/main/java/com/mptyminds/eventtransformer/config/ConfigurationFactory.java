@@ -1,6 +1,7 @@
 package com.mptyminds.eventtransformer.config;
 
 import com.jsoniter.JsonIterator;
+import com.mptyminds.eventtransformer.models.EventSchema;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ConfigurationFactory {
     public static List<String> eventSources; // contains only name
     public static Map<String, String> eventSourceNameMap; // contains source: csv of event names
     public static Map<String, String> eventSourceNamePathMap;
-    public static Map<String, String> eventSourceNameSchemaMap;
+    public static Map<String, EventSchema> eventSourceNameSchemaMap;
 
     @EventListener(classes = {ContextRefreshedEvent.class, RefreshScopeRefreshedEvent.class})
     public synchronized void prepareConfigurations() {
@@ -58,15 +59,32 @@ public class ConfigurationFactory {
 
     }
 
-    private Map<String, String> prepareSourcewiseSchemaMap(Properties configurationProperties) {
+    private Map<String, EventSchema> prepareSourcewiseSchemaMap(Properties configurationProperties) {
         eventSourceNameSchemaMap = new HashMap<>();
-        prepareMapFromConfig(configurationProperties, SOURCE_EVENT_SCHEMA_SUFFIX, eventSourceNameSchemaMap);
+        configurationProperties.forEach((key, value) -> {
+            if (((String) key).endsWith(SOURCE_EVENT_SCHEMA_SUFFIX)) {
+                final String eventSchemaJsonString = (String) value;
+                final String eventSchemaKey = (String) key;
+                eventSourceNameSchemaMap.put(eventSchemaKey, new EventSchema.EventSchemaModelBuilder()
+                        .setEventName(eventSchemaKey)
+                        .setRawEventSchemaString(eventSchemaJsonString)
+                        .build());
+            }
+        });
         return eventSourceNameSchemaMap;
     }
 
     private Map<String, String> prepareSourcePathMap(Properties configurationProperties) {
         eventSourceNamePathMap = new HashMap<>();
-        prepareMapFromConfig(configurationProperties, SOURCE_EVENT_PATHS_SUFFIX, eventSourceNamePathMap);
+        configurationProperties.forEach((key, value) -> {
+            if (((String) key).endsWith(SOURCE_EVENT_PATHS_SUFFIX)) {
+                String eventNamePath = (String) value;
+                if(eventNamePath.startsWith("$(")) {
+                    eventNamePath = eventNamePath.replaceAll("[\\$\\(\\)]", "");
+                }
+                eventSourceNamePathMap.put(((String) key), eventNamePath);
+            }
+        });
         return eventSourceNamePathMap;
     }
 

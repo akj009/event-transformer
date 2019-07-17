@@ -1,36 +1,29 @@
 package com.mptyminds.eventtransformer.service;
 
+import com.jsoniter.ValueType;
+import com.jsoniter.any.Any;
+import com.jsoniter.output.JsonStream;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.jsoniter.JsonIterator.*;
+import static com.jsoniter.JsonIterator.deserialize;
 
 @Log4j2
-@Component
 public class EventTransformerService {
 
-    private String schemaStr = String.join("", Files.readAllLines(Paths.get("src/main/resources/testschema.json")));
-    private Map<String, String> lookupPathsMap = new HashMap<>();
-    private final Map deserializedSchema;
 
-    public EventTransformerService() throws IOException {
-        log.info("input schema string: {}", schemaStr);
-        deserializedSchema = deserialize(schemaStr).as(LinkedHashMap.class);
-//        prepareMissingNodeReferenceMap(deserializedSchema, "");
-    }
-
-    public String transformEvent(String inputJson) {
-        /*final Any deserializeInput = deserialize(inputJson);
-        final LinkedHashMap schemaCopy = new LinkedHashMap(deserializedSchema);
+    public static String transformEvent(String inputJson, Map targetJsonSchemaMap, Map<String, String> lookupPathsMap) {
+        final Any deserializeInput = deserialize(inputJson);
+        final LinkedHashMap schemaCopy = (LinkedHashMap) targetJsonSchemaMap;
         lookupPathsMap.forEach((schemaPath, lookupPath) -> {
             Any eventPathValue = deserializeInput.get(lookupPath.split("\\."));
+            if(eventPathValue.valueType() == ValueType.INVALID) {
+                log.info("null");
+                eventPathValue = Any.wrap("");
+            }
+
             String pathArray[] = schemaPath.split("\\.");
 
             if(pathArray.length>1) {
@@ -48,8 +41,9 @@ public class EventTransformerService {
 
         log.info("final event: {}", schemaCopy);
 
-        return JsonStream.serialize(schemaCopy);*/
-        return inputJson;
+        return JsonStream.serialize(schemaCopy);
     }
+
+
 
 }

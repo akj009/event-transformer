@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventSourceService {
     public String parseEventName(Any inputEventStr, String sourceId) {
-        String eventNamePaths = ConfigurationFactory.eventSourceNamePathMap.get(sourceId);
+        String eventNamePaths = ConfigurationFactory.eventSourceNamePathMap.get(sourceId + "_event_paths");
         return JsonUtil.findStringOnPath(eventNamePaths, inputEventStr);
     }
 }
